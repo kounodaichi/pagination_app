@@ -1,0 +1,7 @@
+<h1>投稿一覧</h1>
+<%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+  <p><%= f.text_field :body,required: true %>
+  <%= f.submit "送信" %></p>
+<% end %>
+<%= render @posts %>
+<%= paginate @posts %>
