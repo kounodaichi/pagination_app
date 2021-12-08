@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
+  PER_PAGE = 10
   def index
     Post.new
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(10)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
   end
 
   def create
-    Post.create!(body:params[:body])
+    Post.create!(Post_params)
     redirect_to root_path  
   end
 
